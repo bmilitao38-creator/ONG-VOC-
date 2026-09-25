@@ -75,10 +75,6 @@
         new CustomEvent("spa:conteudo-carregado")
       );
 
-      if (typeof window.renderizarProjetos === "function") {
-        window.renderizarProjetos();
-      }
-
       document.title = documento.title || document.title;
       document.body.className = documento.body.className;
 
