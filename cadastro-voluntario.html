@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seja voluntário | ONG Você É +</title>
+  <meta name="description" content="Cadastre-se como voluntário da ONG Você É + e ajude crianças e adolescentes acolhidos pela instituição.">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="pagina-cadastro">
+
+  <header class="topo">
+    <div class="marca">
+      <a class="marca-nome" href="ong-voce-e-mais.html">
+        ONG Você É
+        <svg class="logo-mais" viewBox="0 0 64 64" role="img" aria-label="mais" focusable="false">
+          <path class="coracao" d="M32 58C10 42 4 32 4 22C4 13 11 7 19 7C25 7 29.5 10 32 15C34.5 10 39 7 45 7C53 7 60 13 60 22C60 32 54 42 32 58Z"/>
+          <path class="mais" d="M32 21V41M22 31H42"/>
+        </svg>
+      </a>
+      <p>Nós lutamos por você</p>
+    </div>
+
+    <nav aria-label="Menu principal">
+      <ul>
+        <li><a href="ong-voce-e-mais.html">Início</a></li>
+        <li><a href="projetos.html">Projetos</a></li>
+        <li><a href="cadastro-voluntario.html" aria-current="page">Seja voluntário</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="conteudo-principal">
+    <h1>Seja um voluntário</h1>
+    <figure class="figura-topo">
+      <picture>
+        <img width="880" height="528" src="img/333.jpeg" alt="Grupo de voluntários sorrindo, de camiseta azul-clara com a palavra VOLUNTEER, com as mãos empilhadas no centro, vistos de baixo contra o céu">
+      </picture>
+      <figcaption>Junte-se a quem já faz parte dessa corrente de cuidado.</figcaption>
+    </figure>
+
+    <p class="intro">
+      Preencha o formulário abaixo para se cadastrar como voluntário da ONG Você É +.
+      Sua ajuda faz toda a diferença na vida das crianças e adolescentes acolhidos pela
+      instituição. Em breve, alguém da nossa equipe entrará em contato.
+    </p>
+
+    <!-- Mensagem de confirmação ou erro (preenchida por js/cadastro.js) -->
+    <div id="retorno-cadastro" class="retorno" role="status" hidden></div>
+
+    <!-- Formulário em MODO DEMONSTRAÇÃO: sem data-endpoint, nada é enviado.
+         Para receber cadastros de verdade, preencha data-endpoint (e action,
+         para funcionar também sem JavaScript) com o endereço de um servidor ou
+         serviço de formulários, como o Formspree. -->
+    <form id="form-voluntario" class="formulario" action="#" method="post" data-endpoint="">
+
+      <p class="campo-ajuda">Os campos marcados com <span class="obrigatorio">*</span> são obrigatórios.</p>
+
+      <fieldset>
+        <legend>Dados pessoais</legend>
+
+        <label for="nome">Nome completo <span class="obrigatorio" aria-hidden="true">*</span></label>
+        <input type="text" id="nome" name="nome" autocomplete="name" required>
+
+        <label for="nascimento">Data de nascimento <span class="obrigatorio" aria-hidden="true">*</span></label>
+        <input type="date" id="nascimento" name="nascimento" autocomplete="bday" required
+               aria-describedby="nascimento-ajuda" data-idade-minima="18">
+        <p class="campo-ajuda" id="nascimento-ajuda">Voluntários precisam ter 18 anos ou mais.</p>
+
+        <label for="email">E-mail <span class="obrigatorio" aria-hidden="true">*</span></label>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+
+        <label for="telefone">Telefone / WhatsApp <span class="obrigatorio" aria-hidden="true">*</span></label>
+        <input type="tel" id="telefone" name="telefone" autocomplete="tel" placeholder="(11) 91234-5678" required>
+
+        <label for="cidade">Cidade</label>
+        <input type="text" id="cidade" name="cidade" autocomplete="address-level2">
+      </fieldset>
+
+      <fieldset>
+        <legend>Área de interesse</legend>
+        <p class="campo-ajuda">Selecione uma ou mais opções.</p>
+
+        <label class="checkbox">
+          <input type="checkbox" name="area" value="apoio-pedagogico">
+          Apoio pedagógico (reforço escolar, leitura)
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" name="area" value="recreacao">
+          Recreação e oficinas (arte, esporte, música)
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" name="area" value="administrativo">
+          Apoio administrativo
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" name="area" value="eventos">
+          Organização de eventos e campanhas
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" name="area" value="doacoes">
+          Captação de doações
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Disponibilidade</legend>
+
+        <label for="disponibilidade">Quando você pode ajudar? <span class="obrigatorio" aria-hidden="true">*</span></label>
+        <select id="disponibilidade" name="disponibilidade" required>
+          <option value="">Selecione uma opção</option>
+          <option value="dias-uteis">Dias úteis</option>
+          <option value="fins-de-semana">Fins de semana</option>
+          <option value="eventual">Eventual / conforme demanda</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>Sobre você</legend>
+
+        <label for="experiencia">Já teve alguma experiência como voluntário?</label>
+        <textarea id="experiencia" name="experiencia" rows="3"></textarea>
+
+        <label for="mensagem">Por que você quer ser voluntário da ONG Você É +?</label>
+        <textarea id="mensagem" name="mensagem" rows="4"></textarea>
+      </fieldset>
+
+      <label class="checkbox checkbox-termo">
+        <input type="checkbox" name="termo" required>
+        <span>
+          Declaro que as informações acima são verdadeiras e autorizo o uso dos meus dados
+          para contato da ONG Você É +, conforme a
+          <a href="privacidade.html" target="_blank" rel="noopener">Política de privacidade<span class="so-leitor"> (abre em nova aba)</span></a>.
+          <span class="obrigatorio" aria-hidden="true">*</span>
+        </span>
+      </label>
+
+      <button type="submit" class="botao-enviar">Enviar cadastro</button>
+    </form>
+
+    <nav class="mais-paginas" aria-labelledby="mais-paginas-titulo">
+      <h2 id="mais-paginas-titulo">Continue navegando</h2>
+      <ul>
+        <li><a href="ong-voce-e-mais.html">Página inicial</a></li>
+        <li><a href="projetos.html">Conheça nossos projetos</a></li>
+      </ul>
+    </nav>
+
+  </main>
+
+  <footer id="contato">
+    <div class="rodape-conteudo">
+      <h2>Contato</h2>
+
+      <div class="contato-grade">
+        <div>
+          <h3>Fale com a gente</h3>
+          <ul>
+            <li>Telefone: <a class="tel" href="tel:+551170983695">(11) 7098-3695</a></li>
+            <li>WhatsApp: <a class="tel" href="https://wa.me/5511958694736">(11) 95869-4736</a></li>
+            <li>E-mail: <a href="mailto:contato@ongvoceemais.zipemail.com.br">contato@ongvoceemais.zipemail.com.br</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Onde estamos</h3>
+          <address>
+            Rua da China, 7070<br>
+            São Paulo &ndash; SP<br>
+            CEP 08090-100
+          </address>
+          <p>Atendimento: segunda a sexta, das 9h às 17h.</p>
+        </div>
+
+        <div>
+          <h3>Redes sociais</h3>
+          <ul>
+            <li>Facebook: <a href="https://facebook.com/ongvoceemais">/ongvoceemais</a></li>
+            <li>Instagram: <a href="https://instagram.com/ongvoceemais">/ongvoceemais</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="rodape-fim">
+        <small>Copyright &copy; 2026 &ndash; Bruno Militão</small><br>
+        <small>Dados de contato fictícios, criados para fins de estudo.</small><br>
+        <small><a href="privacidade.html">Política de privacidade</a></small>
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/cadastro.js" defer></script>
+  <script src="js/copiar-pix.js" defer></script>
+  <script src="js/router.js" defer></script>
+</body>
+</html>

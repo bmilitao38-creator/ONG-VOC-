@@ -1,0 +1,674 @@
+/* ==========================================================================
+   ONG Você É + — folha de estilos compartilhada por todas as páginas
+
+   Índice
+   1. Base
+   2. Cabeçalho, marca e menu
+   3. Área de conteúdo (comum às páginas)
+   4. Página inicial
+   5. Página de projetos (doação via Pix)
+   6. Página de cadastro de voluntário
+   7. Política de privacidade
+   8. Rodapé
+
+   Variáveis (design tokens) em :root: cores, tipografia (--fs-1 a --fs-5) e
+   espaçamento em grade de 4 px (--sp-1 a --sp-10). Nenhum valor de cor, de
+   tamanho de fonte ou de espaço é escrito fora delas.
+
+   Cada página traz uma classe no <body> (pagina-inicio, pagina-projetos,
+   pagina-cadastro, pagina-privacidade) para ajustes que valem só nela.
+   ========================================================================== */
+
+
+/* 1. Base ------------------------------------------------------------------ */
+
+:root {
+  /* Cores: primárias (identidade) */
+  --azul: #0b778a;
+  --azul-escuro: #075a69;
+
+  /* Cores: acento (ação e calor) */
+  --laranja: #f2a900;
+  --laranja-claro: #ffc233;
+  --laranja-escuro: #b87f00;
+
+  /* Cores: neutras */
+  --branco: #fff;
+  --areia: #f7f4ef;
+  --texto: #22282b;
+  --cinza-texto: #5a6469;
+  --texto-rodape: #eaf5f7;
+  --borda: #d8d2c6;
+  --borda-campo: #b9c2c4;
+
+  /* Cores: translúcidas (hover, divisores e sombra) */
+  --realce: rgba(255, 255, 255, 0.18);
+  --divisor: rgba(255, 255, 255, 0.25);
+  --sombra: rgba(0, 0, 0, 0.18);
+
+  /* Cores: semântica */
+  --erro: #b3261e;
+
+  /* Tipografia: cinco tamanhos (14,4 / 16 / 18 / 24 / 32 px) */
+  --fs-1: 0.9rem;     /* texto auxiliar: legendas, dicas, avisos */
+  --fs-2: 1rem;       /* texto base */
+  --fs-3: 1.125rem;   /* subtítulos e botões */
+  --fs-4: 1.5rem;     /* títulos de seção */
+  --fs-5: 2rem;       /* marca e título da página */
+
+  /* Espaçamento: grade de 4 px; o número do token é o múltiplo de 4 */
+  --sp-1: 0.25rem;    /*  4 px */
+  --sp-2: 0.5rem;     /*  8 px */
+  --sp-3: 0.75rem;    /* 12 px */
+  --sp-4: 1rem;       /* 16 px */
+  --sp-5: 1.25rem;    /* 20 px */
+  --sp-6: 1.5rem;     /* 24 px */
+  --sp-7: 1.75rem;    /* 28 px */
+  --sp-8: 2rem;       /* 32 px */
+  --sp-10: 2.5rem;    /* 40 px */
+}
+
+html { scroll-behavior: smooth; }
+
+* { box-sizing: border-box; }
+
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  background-color: var(--azul);
+  color: var(--texto);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: var(--fs-2);
+  line-height: 1.6;
+}
+
+/* Texto só para leitores de tela */
+.so-leitor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+/* 2. Cabeçalho, marca e menu ------------------------------------------------ */
+
+/* Cabeçalho: marca à esquerda, menu à direita */
+.topo {
+  background-color: var(--azul-escuro);
+  color: var(--branco);
+  padding: var(--sp-5) var(--sp-8);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--sp-4) var(--sp-8);
+}
+
+/* A marca é um link para a página inicial (o <h1> de cada página
+   descreve o assunto da própria página) */
+.marca-nome {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  width: fit-content;
+  margin: 0 0 var(--sp-1);
+  font-size: var(--fs-5);
+  font-weight: bold;
+  line-height: 1.2;
+  color: var(--branco);
+  text-decoration: none;
+}
+
+.marca-nome:focus-visible {
+  outline: 2px solid var(--branco);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.topo p { margin: 0; font-style: italic; text-indent: 0; text-align: left; }
+
+/* Logomarca: um coração com o "+" recortado no meio */
+.logo-mais {
+  flex: none;
+  width: 1.6em;
+  height: 1.6em;
+  animation: batida 1.3s ease-in-out 0.5s 1;
+}
+.logo-mais .coracao { fill: var(--laranja); }
+.logo-mais .mais {
+  fill: none;
+  stroke: var(--azul-escuro);
+  stroke-width: 7.5;
+  stroke-linecap: round;
+}
+
+/* O coração bate duas vezes ao carregar a página e para */
+@keyframes batida {
+  0%, 60%, 100% { transform: scale(1); }
+  15%, 45%      { transform: scale(1.18); }
+  30%           { transform: scale(1); }
+}
+
+/* Menu principal */
+.topo nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.topo nav a {
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;   /* 44 px: área de toque confortável */
+  color: var(--branco);
+  text-decoration: none;
+  padding: var(--sp-2) var(--sp-5);
+  border-radius: 999px;
+  transition: background-color 0.2s;
+}
+
+.topo nav a:hover { background-color: var(--realce); }
+
+.topo nav a:focus-visible {
+  outline: 2px solid var(--branco);
+  outline-offset: 2px;
+}
+
+/* Página atual */
+.topo nav a[aria-current="page"] {
+  background-color: var(--branco);
+  color: var(--azul-escuro);
+  font-weight: bold;
+}
+
+/* Celular: marca em cima, menu embaixo ocupando a largura toda */
+@media (max-width: 640px) {
+  .topo { padding: var(--sp-4) var(--sp-5); }
+  .topo nav { width: 100%; }
+  .topo nav ul { justify-content: space-between; gap: var(--sp-1); }
+  .topo nav a { padding: var(--sp-2) var(--sp-2); font-size: var(--fs-1); }
+}
+
+
+/* 3. Área de conteúdo (comum às páginas) ------------------------------------ */
+
+main {
+  max-width: 70ch;          /* linha de leitura confortável */
+  margin: var(--sp-8) auto;
+  padding: var(--sp-8);
+  background-color: var(--areia);
+  border-radius: 6px;
+}
+
+/* <h1>: assunto da página */
+main h1 {
+  margin: 0 0 var(--sp-4);
+  font-size: var(--fs-5);
+  line-height: 1.25;
+  color: var(--azul-escuro);
+}
+
+h2 { margin-top: var(--sp-10); font-size: var(--fs-4); }
+h3 { margin-bottom: var(--sp-1); font-size: var(--fs-3); }
+small { font-size: var(--fs-1); }
+
+p {
+  text-align: justify;
+  text-indent: 40px;
+}
+
+.meta {
+  color: var(--cinza-texto);
+  font-size: var(--fs-1);
+  text-indent: 0;
+}
+
+blockquote {
+  margin: var(--sp-6) 0;
+  padding-left: var(--sp-4);
+  border-left: 4px solid var(--azul);
+  font-style: italic;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+/* O elemento picture só escolhe o formato; a imagem dentro dele é que ocupa o espaço */
+picture { display: block; }
+
+figure { margin: var(--sp-6) 0; }
+
+figcaption {
+  font-size: var(--fs-1);
+  color: var(--cinza-texto);
+  margin-top: var(--sp-2);
+}
+
+/* Bloco "Conheça mais" / "Continue navegando" no fim do conteúdo */
+.mais-paginas ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-6);
+}
+
+/* Celular: quadro ocupa mais a tela e o texto não fica esticado */
+@media (max-width: 640px) {
+  main { margin: var(--sp-4) var(--sp-3); padding: var(--sp-5); }
+  p, main > p.intro { text-align: left; }
+}
+
+
+/* 4. Página inicial --------------------------------------------------------- */
+
+/* Destaque no topo: foto menor + chamada com botões */
+.destaque {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-6) var(--sp-7);
+  margin-bottom: var(--sp-2);
+}
+
+.destaque figure { flex: 0 0 210px; margin: 0; }
+
+.destaque img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px var(--sombra);
+}
+
+.chamada { flex: 1 1 240px; }
+.chamada h1 { margin: 0 0 var(--sp-2); font-size: var(--fs-5); line-height: 1.25; color: var(--azul-escuro); }
+.chamada p  { margin: 0 0 var(--sp-5); text-align: left; text-indent: 0; }
+
+/* Botão "Seja voluntário" */
+.botao-voluntario {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-3);
+  background-color: var(--laranja);
+  color: var(--texto);
+  font-size: var(--fs-3);
+  font-weight: bold;
+  text-decoration: none;
+  padding: var(--sp-4) var(--sp-7);
+  border-radius: 999px;
+  box-shadow: 0 4px 0 var(--laranja-escuro);
+  transition: transform 0.15s, background-color 0.2s, box-shadow 0.15s;
+}
+
+/* Anel que "pulsa" para chamar atenção */
+.botao-voluntario::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 3px solid var(--laranja);
+  border-radius: inherit;
+  pointer-events: none;
+  animation: pulsar 2.4s ease-out infinite;
+}
+
+.botao-voluntario .seta { transition: transform 0.2s; }
+
+.botao-voluntario:hover,
+.botao-voluntario:focus-visible {
+  background-color: var(--laranja-claro);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 var(--laranja-escuro);
+}
+
+.botao-voluntario:hover .seta,
+.botao-voluntario:focus-visible .seta { transform: translateX(6px); }
+
+.botao-voluntario:focus-visible {
+  outline: 3px solid var(--azul-escuro);
+  outline-offset: 4px;
+}
+
+.botao-voluntario:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 var(--laranja-escuro);
+}
+
+@keyframes pulsar {
+  0%   { transform: scale(1);        opacity: 0.8; }
+  100% { transform: scale(1.18, 1.5); opacity: 0; }
+}
+
+/* Botões lado a lado; "Doe via Pix" é o botão secundário */
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-4) var(--sp-4);
+}
+
+.botao-doar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--azul-escuro);
+  font-size: var(--fs-3);
+  font-weight: bold;
+  text-decoration: none;
+  padding: var(--sp-3) var(--sp-6);
+  border: 2px solid var(--azul-escuro);
+  border-radius: 999px;
+  transition: background-color 0.2s, color 0.2s, transform 0.15s;
+}
+
+.botao-doar:hover,
+.botao-doar:focus-visible {
+  background-color: var(--azul-escuro);
+  color: var(--branco);
+  transform: translateY(-2px);
+}
+
+.botao-doar:focus-visible { outline: 3px solid var(--azul-escuro); outline-offset: 4px; }
+.botao-doar:active { transform: translateY(2px); }
+
+/* Segunda foto (globo): menor e centralizada */
+#fotos { max-width: 320px; margin: var(--sp-6) auto; }
+#fotos figcaption { text-align: center; }
+
+@media (max-width: 640px) {
+  .destaque figure { flex-basis: 100%; max-width: 300px; margin: 0 auto; }
+  .chamada { text-align: center; }
+  .chamada h1 { font-size: var(--fs-4); }
+  .acoes { flex-direction: column; align-items: stretch; }
+  .botao-voluntario,
+  .botao-doar { width: 100%; justify-content: center; }
+}
+
+
+/* 5. Página de projetos (doação via Pix) ------------------------------------ */
+
+/* Nome de cada projeto: <h2> na hierarquia, com o aspecto de subtítulo */
+h2.item-projeto { margin: 1em 0 var(--sp-1); font-size: var(--fs-3); }
+
+/* Badges de categorização dos projetos */
+.badge {
+  display: inline-block;
+  margin-left: var(--sp-2);
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: 999px;
+  font-size: var(--fs-1);
+  line-height: 1.4;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.badge-andamento {
+  background-color: var(--laranja);
+  color: var(--texto);
+}
+
+.badge-ativo {
+  background-color: var(--azul-escuro);
+  color: var(--branco);
+}
+
+
+.pix {
+  background-color: var(--branco);
+  border: 1px solid var(--borda);
+  border-left: 6px solid var(--azul);
+  border-radius: 6px;
+  padding: var(--sp-5);
+  margin: var(--sp-4) 0;
+}
+
+.pix-dados { margin: 0 0 var(--sp-4); }
+.pix-dados div { margin: 0 0 var(--sp-3); }
+.pix-dados dt { font-size: var(--fs-1); color: var(--cinza-texto); }
+.pix-dados dd { margin: 0; font-weight: bold; }
+
+.pix-chave {
+  font-family: "Courier New", monospace;
+  font-size: var(--fs-4);
+  letter-spacing: 0.5px;
+  user-select: all;
+  overflow-wrap: anywhere;
+}
+
+.botao-copiar {
+  background-color: var(--azul-escuro);
+  color: var(--branco);
+  border: none;
+  padding: var(--sp-3) var(--sp-6);
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: var(--fs-3);
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.15s;
+}
+
+.botao-copiar:hover { background-color: var(--azul); }
+.botao-copiar:active { transform: translateY(2px); }
+.botao-copiar:focus-visible { outline: 3px solid var(--azul-escuro); outline-offset: 3px; }
+
+/* Toast semântico exibido pelo JavaScript depois de copiar a chave Pix */
+.pix-status:empty { display: none; }
+
+.pix-status:not(:empty) {
+  position: fixed;
+  right: var(--sp-5);
+  bottom: var(--sp-5);
+  z-index: 1000;
+  max-width: min(360px, calc(100vw - 2 * var(--sp-5)));
+  margin: 0;
+  padding: var(--sp-4) var(--sp-5);
+  background-color: var(--azul-escuro);
+  color: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  box-shadow: 0 6px 18px var(--sombra);
+  text-align: left;
+  text-indent: 0;
+  font-weight: bold;
+}
+
+.pix-aviso {
+  font-size: var(--fs-1);
+  color: var(--cinza-texto);
+  text-align: left;
+  text-indent: 0;
+}
+
+@media (max-width: 640px) {
+  .botao-copiar { width: 100%; }
+}
+
+
+/* 6. Página de cadastro de voluntário --------------------------------------- */
+
+/* Quadro mais estreito e parágrafos sem recuo (só a introdução é justificada) */
+.pagina-cadastro main { max-width: 60ch; }
+.pagina-cadastro main p { text-indent: 0; text-align: left; }
+.pagina-cadastro main > p.intro { text-align: justify; }
+
+.figura-topo { margin: 0 0 var(--sp-6); }
+
+.figura-topo img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+}
+
+.figura-topo figcaption { text-align: center; }
+
+/* Formulário */
+.formulario fieldset {
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  margin: 0 0 var(--sp-6);
+  padding: var(--sp-4) var(--sp-5) var(--sp-5);
+}
+
+.formulario legend {
+  font-weight: bold;
+  padding: 0 var(--sp-2);
+  color: var(--azul-escuro);
+}
+
+.formulario label {
+  display: block;
+  font-weight: bold;
+  margin: var(--sp-4) 0 var(--sp-1);
+}
+
+.formulario label.checkbox {
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin: var(--sp-2) 0;
+}
+
+/* Termo de consentimento: texto longo, então a caixa fica alinhada ao topo */
+.formulario label.checkbox-termo { align-items: flex-start; }
+.formulario label.checkbox-termo input { margin-top: 0.4em; flex: none; }
+
+.formulario input[type="text"],
+.formulario input[type="email"],
+.formulario input[type="tel"],
+.formulario input[type="date"],
+.formulario select,
+.formulario textarea {
+  width: 100%;
+  padding: var(--sp-3);
+  border: 1px solid var(--borda-campo);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: var(--fs-2);
+}
+
+.formulario textarea { resize: vertical; }
+
+.campo-ajuda {
+  font-size: var(--fs-1);
+  color: var(--cinza-texto);
+  margin-top: var(--sp-1);
+}
+
+.obrigatorio { color: var(--erro); }
+
+.botao-enviar {
+  background-color: var(--azul);
+  color: var(--branco);
+  border: none;
+  padding: var(--sp-4) var(--sp-7);
+  border-radius: 4px;
+  font-size: var(--fs-3);
+  cursor: pointer;
+}
+
+.botao-enviar:hover,
+.botao-enviar:focus-visible { background-color: var(--azul-escuro); }
+.botao-enviar:focus-visible { outline: 3px solid var(--azul-escuro); outline-offset: 3px; }
+.botao-enviar:disabled { opacity: 0.7; cursor: wait; }
+
+/* Mensagem depois do envio (sucesso ou erro) */
+.retorno {
+  background-color: var(--branco);
+  border: 1px solid var(--borda);
+  border-left: 6px solid var(--azul);
+  border-radius: 6px;
+  padding: var(--sp-5);
+  margin: var(--sp-4) 0 var(--sp-6);
+}
+
+.retorno-erro { border-left-color: var(--erro); }
+
+.retorno h2 { margin: 0 0 var(--sp-2); font-size: var(--fs-4); line-height: 1.3; color: var(--azul-escuro); }
+.retorno-erro h2 { color: var(--erro); }
+.retorno h2:focus { outline: none; }
+.retorno p { margin: 0; }
+
+@media (max-width: 640px) {
+  .pagina-cadastro main > p.intro { text-align: left; }
+}
+
+
+/* 7. Política de privacidade ------------------------------------------------ */
+
+.aviso {
+  background-color: var(--branco);
+  border: 1px solid var(--borda);
+  border-left: 6px solid var(--laranja);
+  border-radius: 6px;
+  padding: var(--sp-4) var(--sp-5);
+  margin: 0 0 var(--sp-6);
+  font-size: var(--fs-1);
+  text-align: left;
+  text-indent: 0;
+}
+
+
+/* 8. Rodapé (bloco de contato — dados fictícios) ---------------------------- */
+
+footer {
+  background-color: var(--azul-escuro);
+  color: var(--texto-rodape);
+  padding: var(--sp-8) var(--sp-5) var(--sp-6);
+}
+
+.rodape-conteudo { max-width: 900px; margin: 0 auto; }
+
+footer h2 { margin: 0 0 var(--sp-5); font-size: var(--fs-4); color: var(--branco); }
+footer h3 { margin: 0 0 var(--sp-2); font-size: var(--fs-3); color: var(--branco); }
+
+.contato-grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--sp-6) var(--sp-8);
+}
+
+footer ul { list-style: none; margin: 0; padding: 0; }
+footer li { margin: var(--sp-2) 0; }
+footer address { font-style: normal; }
+footer .tel { white-space: nowrap; }
+footer p { margin: var(--sp-2) 0 0; text-align: left; text-indent: 0; }
+
+footer a {
+  color: var(--branco);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+footer a:hover,
+footer a:focus-visible { color: var(--laranja-claro); }
+
+.rodape-fim {
+  margin-top: var(--sp-7);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--divisor);
+  text-align: center;
+}
+
+
+/* Quem prefere menos movimento --------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .logo-mais { animation: none; }
+  .botao-voluntario::after { animation: none; }
+  .botao-voluntario,
+  .botao-voluntario .seta,
+  .botao-doar { transition: none; }
+}
