@@ -8,7 +8,9 @@ A aplicação representa o site fictício da **ONG Você É +**, instituição v
 
 O projeto está publicado por meio do GitHub Pages.
 
-A aplicação pode ser acessada pela página inicial disponibilizada no GitHub Pages deste repositório.
+Acesse a aplicação publicada:
+
+**[ONG Você É + — GitHub Pages](https://bmilitao38-creator.github.io/ONG-VOC-/)**
 
 ## 🎯 Objetivo
 
