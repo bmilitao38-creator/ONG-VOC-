@@ -1,64 +1,59 @@
-ONG VOCÊ É +  |  Projeto de páginas web: assets e recursos
-=====================================================================
+# ONG Você É +
 
-COMO ABRIR
-  Abra site/ong-voce-e-mais.html no navegador. Mantenha as pastas css/, js/ e
-  img/ ao lado dos arquivos .html: as páginas dependem delas.
+Projeto acadêmico de desenvolvimento Front-End criado para fins de estudo no curso de Análise e Desenvolvimento de Sistemas.
 
-ESTRUTURA
-  site/
-    ong-voce-e-mais.html         Início
-    projetos.html                Projetos e doação via Pix
-    cadastro-voluntario.html     Cadastro de voluntário (formulário)
-    privacidade.html             Política de privacidade (modelo de estudo)
-    css/styles.css               Folha de estilos única, usada pelas 4 páginas
-    js/copiar-pix.js             Botão "Copiar chave Pix"
-    js/cadastro.js               Validação de idade, envio e confirmação
-    img/                         Imagens otimizadas, em 3 formatos cada
+A aplicação representa o site fictício da **ONG Você É +**, instituição voltada ao acolhimento de crianças e adolescentes.
 
-IMAGENS OTIMIZADAS (pasta site/img/)
-  Cada imagem existe em JPEG, WebP e AVIF, com o mesmo nome-base.
+## 🌐 Site publicado
 
-  imagem                   dimensões (px)       JPEG        WebP        AVIF
-  ilustracao-coracoes.*    640x427                28.1 KB     12.1 KB      7.2 KB   (original: 28 KB)
-  bonecos-globo.*          640x640                55.2 KB     26.9 KB     19.9 KB   (original: 55 KB)
-  voluntarios.*            1024x614 -> 880x528    69.6 KB     41.1 KB     29.1 KB   (original: 136 KB)
-  TOTAL                                         153.0 KB     80.1 KB     56.2 KB   (original: 220 KB)
+O projeto está publicado por meio do GitHub Pages.
 
-  - AVIF e WebP são formatos modernos, bem mais leves. O JPEG é a garantia
-    para navegadores antigos. O navegador escolhe sozinho o primeiro formato
-    que entende, graças ao elemento <picture>:
+A aplicação pode ser acessada pela página inicial disponibilizada no GitHub Pages deste repositório.
 
-      <picture>
-        <source srcset="img/voluntarios.avif" type="image/avif">
-        <source srcset="img/voluntarios.webp" type="image/webp">
-        <img src="img/voluntarios.jpg" alt="..." width="880" height="528">
-      </picture>
+## 🎯 Objetivo
 
-  - Tamanho de cada imagem: escolhido pela largura máxima em que aparece nas
-    páginas (medida de 320 a 1920 px de tela), dobrada para telas retina.
-    Só voluntarios.jpg estava maior que o necessário (1024 px para no máximo
-    440 px exibidos) e foi reduzida para 880 px. As outras duas já estavam no
-    tamanho certo e o JPEG delas foi mantido sem recompressão.
-  - Qualidade: WebP 80, AVIF 60 e JPEG 82 (fidelidade equivalente entre os
-    formatos, conferida por PSNR e por comparação visual ampliada).
-  - As logomarcas (coração com "+") são SVG dentro do HTML: não há arquivo.
+Desenvolver uma aplicação web utilizando HTML5, CSS3 e JavaScript, aplicando conceitos de:
 
-OBSERVAÇÕES
-  - O formulário está em MODO DEMONSTRAÇÃO: valida os campos e confirma na tela,
-    mas não envia dados. Para receber cadastros, preencha data-endpoint (e
-    action) no <form> de cadastro-voluntario.html com o endereço de um serviço
-    de formulários.
-  - Todos os dados de contato, a chave Pix e o texto de privacidade são
-    fictícios/modelo, criados para fins de estudo.
+- HTML semântico;
+- estilização e responsividade com CSS;
+- manipulação do DOM;
+- navegação no modelo SPA;
+- componentes gerados dinamicamente;
+- armazenamento local com localStorage;
+- validação de formulário;
+- acessibilidade;
+- versionamento com Git e GitHub;
+- publicação com GitHub Pages.
 
+## 🛠️ Tecnologias utilizadas
 
-SPA: js/router.js intercepta links internos, usa fetch(), DOMParser, history.pushState() e atualiza somente #conteudo-principal. Use um servidor local (ex.: Live Server) para testar o fetch.
-\n\nPersistência local:\n- O formulário usa localStorage para salvar e restaurar os campos neste navegador.\n- JSON.stringify() converte o objeto em string; JSON.parse() restaura o objeto.\n- Nenhum dado é enviado a servidor.\n
-Versionamento GitFlow:
-- main: versão estável e pronta para entrega.
-- develop: integração contínua das funcionalidades em desenvolvimento.
-- feature/spa: desenvolvimento do roteamento SPA.
-- feature/templates: sistema de templates JavaScript.
-- feature/localstorage: persistência local do formulário.
-- Fluxo: feature/* -> develop -> main.
+- HTML5
+- CSS3
+- JavaScript
+- DOM
+- LocalStorage
+- Git
+- GitHub
+- GitHub Pages
+
+O projeto utiliza tecnologias nativas do navegador, sem frameworks JavaScript.
+
+## 📁 Estrutura do projeto
+
+```text
+ONG-VOC-/
+├── 111.jpg
+├── 222aaa.jpg
+├── 333.jpeg
+├── GITFLOW.md
+├── LEIA-ME.txt
+├── README.md
+├── index.html
+├── projetos.html
+├── cadastro-voluntario.html
+├── privacidade.html
+├── estilos.css
+├── cadastro.js
+├── copiar-pix.js
+├── roteador.js
+└── templates.js
