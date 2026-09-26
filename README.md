@@ -1,79 +1,197 @@
 # ONG Você É +
 
-Projeto acadêmico desenvolvido durante o curso de **Superior de Tecnologia em Análise e Desenvolvimento de Sistemas**.
+Projeto acadêmico de desenvolvimento Front-End criado para fins de estudo no curso de Análise e Desenvolvimento de Sistemas.
 
-A aplicação apresenta uma proposta de site para a ONG fictícia **Você É +**, reunindo informações institucionais, projetos sociais, formas de contribuição e cadastro de voluntários.
+A aplicação representa o site fictício da **ONG Você É +**, instituição voltada ao acolhimento de crianças e adolescentes.
 
-## 🎯 Objetivo do projeto
+## 🌐 Site publicado
 
-Desenvolver uma aplicação web utilizando tecnologias front-end, aplicando conceitos estudados durante a graduação, como estruturação semântica, estilização, responsividade, interatividade, manipulação do DOM, armazenamento local e acessibilidade.
+O projeto está publicado por meio do GitHub Pages.
 
-## 💻 Tecnologias utilizadas
+A aplicação pode ser acessada pela página inicial disponibilizada no GitHub Pages deste repositório.
+
+## 🎯 Objetivo
+
+Desenvolver uma aplicação web utilizando HTML5, CSS3 e JavaScript, aplicando conceitos de:
+
+- HTML semântico;
+- estilização e responsividade com CSS;
+- manipulação do DOM;
+- navegação no modelo SPA;
+- componentes gerados dinamicamente;
+- armazenamento local com localStorage;
+- validação de formulário;
+- acessibilidade;
+- versionamento com Git e GitHub;
+- publicação com GitHub Pages.
+
+## 🛠️ Tecnologias utilizadas
 
 - HTML5
 - CSS3
 - JavaScript
-- DOM (Document Object Model)
+- DOM
 - LocalStorage
 - Git
 - GitHub
+- GitHub Pages
 
-## ⚙️ Funcionalidades
-
-O projeto contempla recursos como:
-
-- Navegação entre páginas da aplicação;
-- Navegação SPA utilizando JavaScript;
-- Componentes e templates dinâmicos;
-- Formulário para cadastro de voluntários;
-- Validação dos campos do formulário;
-- Persistência de dados utilizando LocalStorage;
-- Botão para copiar chave Pix;
-- Mensagens de retorno ao usuário;
-- Badges de identificação dos projetos;
-- Recursos de acessibilidade;
-- Layout responsivo;
-- Imagens otimizadas para utilização na aplicação.
-
-## ♿ Acessibilidade
-
-Durante o desenvolvimento foram considerados recursos de acessibilidade, incluindo estrutura semântica em HTML, identificação de campos de formulário, navegação por teclado, estados de foco, mensagens de status e redução de animações conforme as preferências do usuário.
+O projeto utiliza tecnologias nativas do navegador, sem frameworks JavaScript.
 
 ## 📁 Estrutura do projeto
 
-O projeto é composto por arquivos HTML responsáveis pela estrutura das páginas, CSS para apresentação visual e JavaScript para comportamento e interatividade.
+```text
+ONG-VOC-/
+├── 111.jpg
+├── 222aaa.jpg
+├── 333.jpeg
+├── GITFLOW.md
+├── LEIA-ME.txt
+├── README.md
+├── index.html
+├── projetos.html
+├── cadastro-voluntario.html
+├── privacidade.html
+├── estilos.css
+├── cadastro.js
+├── copiar-pix.js
+├── roteador.js
+└── templates.js
 
-Entre os principais arquivos estão:
+```
 
-- `ong-voce-e-mais.html` — página principal;
-- `projetos.html` — apresentação dos projetos;
-- `cadastro-voluntário.html` — formulário de voluntariado;
-- `estilos.css` — estilos da aplicação;
-- `roteador.js` — navegação SPA;
-- `templates.js` — componentes dinâmicos;
-- `cadastro.js` — validação e persistência do formulário;
-- `copiar-pix.js` — funcionalidade relacionada à chave Pix.
+## 📄 Páginas
 
-## 💾 Persistência de dados
+### Página inicial
 
-O formulário utiliza `localStorage` para armazenar informações no próprio navegador, permitindo recuperar determinados dados mesmo após a atualização da página.
+O arquivo `index.html` apresenta informações institucionais da ONG, incluindo missão, visão, valores e formas de participação.
 
-Este projeto possui finalidade acadêmica e não realiza o envio dos dados para um servidor de produção.
+### Projetos
 
-## 🔄 Versionamento
+O arquivo `projetos.html` apresenta os projetos da instituição e uma área demonstrativa de doação via Pix.
 
-O código-fonte é versionado utilizando **Git e GitHub**, permitindo registrar a evolução do projeto por meio de commits e manter uma versão estável da aplicação.
+Os projetos são renderizados dinamicamente pelo arquivo `templates.js`.
+
+### Cadastro de voluntário
+
+O arquivo `cadastro-voluntario.html` contém um formulário para demonstração do cadastro de voluntários.
+
+O formulário possui validação dos campos, verificação da idade mínima de 18 anos e mensagens de retorno para o usuário.
+
+### Política de privacidade
+
+O arquivo `privacidade.html` apresenta um modelo acadêmico de política de privacidade relacionado aos dados utilizados no formulário.
+
+## 🔄 Navegação SPA
+
+O arquivo `roteador.js` implementa parte da navegação no modelo Single Page Application (SPA).
+
+A navegação interna utiliza recursos como:
+
+- `fetch()`;
+- `DOMParser`;
+- `history.pushState()`;
+- evento `popstate`;
+- atualização dinâmica de `#conteudo-principal`.
+
+Dessa forma, o conteúdo principal pode ser atualizado sem a necessidade de recarregar completamente a página durante a navegação interna.
+
+## 🧩 Componentes dinâmicos
+
+O arquivo `templates.js` gera dinamicamente os componentes apresentados na página de projetos.
+
+Entre eles estão os projetos:
+
+- CDCA — Em andamento;
+- Casa de Apoio — Ativo.
+
+Os badges ajudam a identificar visualmente o estado de cada projeto.
+
+## 💾 LocalStorage
+
+O formulário de voluntariado utiliza `localStorage` para armazenar e restaurar os dados preenchidos no navegador.
+
+São utilizados:
+
+- `JSON.stringify()` para converter os dados em texto;
+- `JSON.parse()` para recuperar os dados armazenados.
+
+Nenhum dado é enviado para um servidor.
+
+## 📝 Formulário de voluntariado
+
+O formulário funciona em **modo demonstração**.
+
+Entre as funcionalidades implementadas estão:
+
+- validação dos campos obrigatórios;
+- validação de e-mail pelo navegador;
+- verificação da idade mínima de 18 anos;
+- armazenamento local dos campos;
+- restauração dos dados;
+- mensagem de erro;
+- mensagem de confirmação;
+- gerenciamento de foco após o retorno ao usuário.
+
+Após um cadastro válido, é exibida a mensagem:
+
+> Cadastro de demonstração concluído.
+
+O projeto não possui backend para recebimento dos dados.
+
+## 💳 Demonstração de Pix
+
+A página de projetos possui uma chave Pix fictícia utilizada exclusivamente para demonstração acadêmica.
+
+O arquivo `copiar-pix.js` permite copiar a chave para a área de transferência e apresenta uma mensagem de confirmação ao usuário.
+
+Nenhuma transferência real deve ser realizada.
+
+## ♿ Acessibilidade
+
+O projeto utiliza recursos de acessibilidade, incluindo:
+
+- HTML semântico;
+- textos alternativos nas imagens;
+- `aria-live`;
+- `aria-current`;
+- `role="status"`;
+- gerenciamento de foco;
+- estados de foco visíveis;
+- suporte a `prefers-reduced-motion`.
+
+## 📱 Responsividade
+
+O arquivo `estilos.css` contém as regras visuais e adaptações necessárias para diferentes tamanhos de tela.
+
+O layout foi desenvolvido para funcionar tanto em computadores quanto em dispositivos com telas menores.
 
 ## 🚀 Publicação
 
-O projeto será disponibilizado por meio do **GitHub Pages**, permitindo o acesso à aplicação diretamente pelo navegador.
+O projeto está publicado utilizando **GitHub Pages**, a partir da branch principal e da raiz do repositório.
+
+A versão publicada foi testada no navegador, incluindo:
+
+- página inicial;
+- página de projetos;
+- componentes dinâmicos;
+- navegação SPA;
+- área de Pix;
+- botão para copiar a chave;
+- formulário de voluntariado;
+- armazenamento local;
+- política de privacidade.
+
+## ⚠️ Projeto acadêmico
+
+Este projeto foi desenvolvido exclusivamente para fins acadêmicos.
+
+Os dados da ONG, endereço, telefones, redes sociais, chave Pix e demais informações apresentadas são fictícios ou utilizados apenas como demonstração.
+
+O formulário não envia dados para um servidor e a chave Pix não deve ser utilizada para transferências reais.
 
 ## 👨‍💻 Autor
 
 **Bruno Militão**
 
-Estudante de Superior de Tecnologia em Análise e Desenvolvimento de Sistemas.
-
----
-
-Projeto desenvolvido para fins acadêmicos e de aprendizagem.
+Projeto desenvolvido como atividade acadêmica do curso de **Análise e Desenvolvimento de Sistemas**.
